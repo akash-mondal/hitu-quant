@@ -33,10 +33,10 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "33", label: "Topics" },
-  { value: "80+", label: "Subtopics" },
-  { value: "350+", label: "Resources" },
-  { value: "3", label: "Categories" },
+  { value: 33, label: "Topics", suffix: "" },
+  { value: 80, label: "Subtopics", suffix: "+" },
+  { value: 350, label: "Resources", suffix: "+" },
+  { value: 3, label: "Categories", suffix: "" },
 ];
 
 const ALL_TOPICS = [
@@ -51,12 +51,13 @@ const ALL_TOPICS = [
   "Interview Puzzles", "Probability Puzzles", "Simple & CI",
 ];
 
-const HERO_CARDS = [
-  { emoji: "🔢", name: "Number Systems", xp: "+12 XP", color: "#4F46E5" },
-  { emoji: "🎯", name: "Probability", xp: "+10 XP", color: "#DB2777" },
-  { emoji: "🧠", name: "Critical Reasoning", xp: "+15 XP", color: "#F59E0B" },
-  { emoji: "🧩", name: "Puzzles", xp: "+8 XP", color: "#84CC16" },
-  { emoji: "📐", name: "Geometry", xp: "+14 XP", color: "#EA580C" },
+// Mini preview data for the right-side mockup
+const PREVIEW_TOPICS = [
+  { emoji: "🔢", name: "Number Systems", progress: 85, color: "#4F46E5" },
+  { emoji: "💹", name: "Percentages", progress: 62, color: "#7C3AED" },
+  { emoji: "💰", name: "Profit & Loss", progress: 40, color: "#2563EB" },
+  { emoji: "🚀", name: "Time Speed & Distance", progress: 20, color: "#DC2626" },
+  { emoji: "🎯", name: "Probability", progress: 0, color: "#DB2777" },
 ];
 
 function TopicMarquee() {
@@ -65,17 +66,13 @@ function TopicMarquee() {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-
-    // Duplicate content for seamless loop
     const contentWidth = track.scrollWidth / 2;
-
     const tween = gsap.to(track, {
       x: -contentWidth,
       duration: 40,
       ease: "none",
       repeat: -1,
     });
-
     return () => { tween.kill(); };
   }, []);
 
@@ -83,7 +80,6 @@ function TopicMarquee() {
 
   return (
     <div className="overflow-hidden relative">
-      {/* Fade edges */}
       <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-cream-100 to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-cream-100 to-transparent pointer-events-none" />
       <div ref={trackRef} className="flex gap-3 py-1 w-max">
@@ -100,142 +96,219 @@ function TopicMarquee() {
   );
 }
 
+/** Split a string into <span> per word, each containing <span> per char */
+function SplitWords({ text, className }: { text: string; className?: string }) {
+  return (
+    <>
+      {text.split(" ").map((word, wi) => (
+        <span key={wi} className="inline-block overflow-hidden mr-[0.28em]">
+          <span className={`hero-word inline-block ${className ?? ""}`}>
+            {word}
+          </span>
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function LandingPage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const taglineRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const ctaSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero timeline
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // ── Hero split-text reveal ──
+      const heroWords = gsap.utils.toArray<HTMLElement>(".hero-word");
+      gsap.set(heroWords, { yPercent: 120 });
 
-      tl.from(taglineRef.current, {
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+      // Tagline clip reveal
+      tl.from(".hero-tagline", {
+        clipPath: "inset(0 100% 0 0)",
         opacity: 0,
-        y: 30,
-        duration: 0.6,
-      })
-        .from(
-          headlineRef.current,
-          {
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-          },
-          "-=0.3"
-        )
-        .from(
-          subtitleRef.current,
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-          },
-          "-=0.4"
-        )
-        .from(
-          ctaRef.current,
-          {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-          },
-          "-=0.3"
-        )
-        .from(
-          statsRef.current,
-          {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-          },
-          "-=0.3"
-        );
+        duration: 0.7,
+      });
 
-      // Floating cards stagger in
-      if (cardsContainerRef.current) {
-        const cards = cardsContainerRef.current.querySelectorAll(".hero-card");
-        tl.from(
-          cards,
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.85,
-            rotation: 0,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: "back.out(1.4)",
-          },
-          "-=1.2"
-        );
+      // Words cascade up from behind clip masks
+      tl.to(
+        heroWords,
+        {
+          yPercent: 0,
+          duration: 1,
+          stagger: 0.06,
+        },
+        "-=0.3"
+      );
 
-        // Continuous float for each card
-        cards.forEach((card, i) => {
-          gsap.to(card, {
-            y: i % 2 === 0 ? -8 : 8,
-            duration: 2.5 + i * 0.3,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: i * 0.2,
-          });
+      // Underline draws in
+      tl.from(
+        ".hero-underline",
+        {
+          scaleX: 0,
+          transformOrigin: "left center",
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      );
+
+      // Subtitle fades + slides
+      tl.from(
+        ".hero-subtitle",
+        {
+          opacity: 0,
+          y: 25,
+          filter: "blur(8px)",
+          duration: 0.7,
+          ease: "power3.out",
+        },
+        "-=0.5"
+      );
+
+      // CTA pops
+      tl.from(
+        ".hero-cta",
+        {
+          opacity: 0,
+          y: 20,
+          scale: 0.95,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        "-=0.3"
+      );
+
+      // Stats count up
+      tl.from(
+        ".hero-stats",
+        { opacity: 0, y: 15, duration: 0.4 },
+        "-=0.3"
+      );
+
+      // Animate stat numbers counting up
+      document.querySelectorAll<HTMLElement>(".stat-number").forEach((el) => {
+        const target = parseInt(el.dataset.value || "0", 10);
+        const suffix = el.dataset.suffix || "";
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: target,
+          duration: 1.5,
+          delay: 0.8,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = Math.round(obj.val) + suffix;
+          },
         });
-      }
+      });
 
-      // Features scroll-triggered
+      // ── Right-side mockup ──
+      tl.from(
+        ".hero-mockup",
+        {
+          opacity: 0,
+          x: 60,
+          rotateY: 8,
+          duration: 1,
+          ease: "power3.out",
+        },
+        0.4
+      );
+
+      // Mockup inner rows stagger
+      tl.from(
+        ".mockup-row",
+        {
+          opacity: 0,
+          x: 30,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        0.8
+      );
+
+      // Progress bars fill
+      document.querySelectorAll<HTMLElement>(".mockup-progress-fill").forEach((bar) => {
+        const w = bar.dataset.progress || "0";
+        gsap.to(bar, {
+          width: `${w}%`,
+          duration: 1.2,
+          delay: 1.4,
+          ease: "power2.out",
+        });
+      });
+
+      // Mockup streak counter
+      tl.from(
+        ".mockup-streak",
+        {
+          opacity: 0,
+          scale: 0.8,
+          y: 10,
+          duration: 0.5,
+          ease: "back.out(2)",
+        },
+        1.6
+      );
+
+      // ── Features scroll-triggered ──
       if (featuresRef.current) {
-        const featureCards = featuresRef.current.querySelectorAll(".feature-card");
-        gsap.from(featureCards, {
+        const cards = featuresRef.current.querySelectorAll(".feature-card");
+        gsap.from(cards, {
           scrollTrigger: {
             trigger: featuresRef.current,
             start: "top 80%",
             toggleActions: "play none none none",
           },
           opacity: 0,
-          y: 40,
+          y: 50,
           duration: 0.6,
-          stagger: 0.12,
+          stagger: 0.1,
           ease: "power2.out",
         });
       }
 
-      // CTA section scroll-triggered
+      // ── CTA section ──
       if (ctaSectionRef.current) {
-        gsap.from(ctaSectionRef.current, {
+        const ctaHeadingWords = ctaSectionRef.current.querySelectorAll(".cta-word");
+        gsap.set(ctaHeadingWords, { yPercent: 100, opacity: 0 });
+
+        gsap.to(ctaHeadingWords, {
           scrollTrigger: {
             trigger: ctaSectionRef.current,
-            start: "top 85%",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: "power4.out",
+        });
+
+        gsap.from(".cta-body", {
+          scrollTrigger: {
+            trigger: ctaSectionRef.current,
+            start: "top 75%",
             toggleActions: "play none none none",
           },
           opacity: 0,
-          y: 40,
-          scale: 0.97,
-          duration: 0.7,
+          y: 20,
+          duration: 0.6,
+          delay: 0.3,
           ease: "power2.out",
         });
       }
-    }, heroRef);
+    }, rootRef);
 
     return () => ctx.revert();
   }, []);
 
-  const cardPositions = [
-    { top: "8%", left: "5%", rotate: -3 },
-    { top: "4%", right: "8%", rotate: 4 },
-    { top: "38%", left: "15%", rotate: -2 },
-    { top: "42%", right: "5%", rotate: 3 },
-    { top: "72%", left: "20%", rotate: -1 },
-  ];
-
   return (
-    <div ref={heroRef} className="noise-bg min-h-screen bg-cream-100 relative overflow-hidden">
-      {/* Background atmosphere */}
+    <div ref={rootRef} className="noise-bg min-h-screen bg-cream-100 relative overflow-hidden">
+      {/* Background */}
       <div className="orb orb-gold w-[500px] h-[500px] -top-40 -right-40 opacity-60" />
       <div className="orb orb-cream w-[600px] h-[600px] top-1/3 -left-60" />
       <div className="orb orb-gold w-[400px] h-[400px] bottom-20 right-1/4 opacity-40" />
@@ -256,46 +329,38 @@ export default function LandingPage() {
         </SignInButton>
       </nav>
 
-      {/* Hero */}
+      {/* ══════ Hero ══════ */}
       <section className="relative z-10 px-6 lg:px-16 pt-16 lg:pt-24 pb-20 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left: Copy */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          {/* Left */}
           <div className="flex-1 max-w-2xl">
-            {/* Tagline chip */}
-            <div ref={taglineRef}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/70 backdrop-blur-sm border border-cream-200 text-charcoal-700 rounded-full text-[0.8rem] font-body font-medium shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-                Quant · Logical Reasoning · Puzzles
-              </span>
-            </div>
+            {/* Tagline */}
+            <span className="hero-tagline inline-flex items-center gap-2 px-4 py-1.5 bg-white/70 backdrop-blur-sm border border-cream-200 text-charcoal-700 rounded-full text-[0.8rem] font-body font-medium shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+              Quant · Logical Reasoning · Puzzles
+            </span>
 
-            {/* Headline */}
-            <h1
-              ref={headlineRef}
-              className="mt-7 font-display text-[3rem] sm:text-[3.8rem] lg:text-[4.5rem] text-charcoal-900 leading-[1.05] tracking-tight"
-            >
-              Placement prep
+            {/* Headline — split text reveal */}
+            <h1 className="mt-7 font-display text-[3rem] sm:text-[3.8rem] lg:text-[4.5rem] text-charcoal-900 leading-[1.05] tracking-tight">
+              <SplitWords text="Placement prep" />
               <br />
-              that's actually{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-gold-600 italic">
-                  addictive
+              <SplitWords text="that's actually" />{" "}
+              <span className="inline-block overflow-hidden mr-[0.28em]">
+                <span className="hero-word inline-block relative">
+                  <span className="relative z-10 text-gold-600 italic">addictive</span>
+                  <span className="hero-underline absolute -bottom-1 left-0 right-0 h-3 bg-gold-400/30 rounded-sm" />
                 </span>
-                <span className="absolute -bottom-1 left-0 right-0 h-3 bg-gold-400/30 rounded-sm hero-underline" />
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p
-              ref={subtitleRef}
-              className="mt-6 font-body text-[1.05rem] lg:text-[1.15rem] text-charcoal-600 max-w-xl leading-relaxed"
-            >
+            <p className="hero-subtitle mt-6 font-body text-[1.05rem] lg:text-[1.15rem] text-charcoal-600 max-w-xl leading-relaxed">
               Duolingo-style learning for aptitude. Streaks, XP, leagues — all
               the mechanics that keep you coming back, applied to placement prep.
             </p>
 
             {/* CTA */}
-            <div ref={ctaRef} className="mt-8">
+            <div className="hero-cta mt-8">
               <SignInButton mode="modal">
                 <button className="btn-primary text-[1.05rem] px-8 py-4">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="shrink-0">
@@ -309,14 +374,18 @@ export default function LandingPage() {
               </SignInButton>
             </div>
 
-            {/* Stats row */}
-            <div ref={statsRef} className="mt-10 flex items-center gap-6 lg:gap-8">
+            {/* Stats with count-up */}
+            <div className="hero-stats mt-10 flex items-center gap-6 lg:gap-8">
               {STATS.map((stat, i) => (
                 <div key={stat.label} className="flex items-center gap-2">
                   {i > 0 && <div className="w-px h-8 bg-cream-200 -ml-3 mr-1" />}
                   <div>
-                    <p className="font-mono font-bold text-[1.3rem] text-charcoal-900 leading-tight">
-                      {stat.value}
+                    <p
+                      className="stat-number font-mono font-bold text-[1.3rem] text-charcoal-900 leading-tight"
+                      data-value={stat.value}
+                      data-suffix={stat.suffix}
+                    >
+                      0
                     </p>
                     <p className="font-body text-[0.7rem] text-charcoal-600/50 uppercase tracking-wider">
                       {stat.label}
@@ -327,75 +396,102 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Right: Floating cards visual */}
-          <div
-            ref={cardsContainerRef}
-            className="relative w-full max-w-md lg:max-w-lg h-[380px] lg:h-[440px] hidden md:block"
-          >
-            {/* Glow backdrop */}
+          {/* ── Right: App mockup ── */}
+          <div className="hero-mockup relative hidden md:block w-full max-w-[400px] lg:max-w-[440px]" style={{ perspective: "1200px" }}>
             <div
-              className="absolute inset-0 rounded-3xl"
-              style={{
-                background: "radial-gradient(circle at 50% 50%, rgba(255, 176, 32, 0.12) 0%, transparent 70%)",
-              }}
-            />
-
-            {/* Floating resource cards */}
-            {HERO_CARDS.map((card, i) => {
-              const pos = cardPositions[i];
-              return (
-                <div
-                  key={card.name}
-                  className="hero-card absolute"
-                  style={{
-                    top: pos.top,
-                    left: "left" in pos ? pos.left : undefined,
-                    right: "right" in pos ? pos.right : undefined,
-                    transform: `rotate(${pos.rotate}deg)`,
-                  }}
-                >
-                  <div className="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-white/90 backdrop-blur-sm border border-cream-200/80 shadow-lg shadow-charcoal-900/[0.06]">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
-                      style={{ background: `${card.color}15` }}
-                    >
-                      {card.emoji}
-                    </div>
-                    <div>
-                      <p className="font-body font-semibold text-[0.85rem] text-charcoal-900 leading-tight">
-                        {card.name}
-                      </p>
-                      <p className="font-mono text-[0.7rem] text-gold-600 font-bold mt-0.5">
-                        {card.xp}
-                      </p>
-                    </div>
+              className="rounded-2xl bg-white border border-cream-200 shadow-2xl shadow-charcoal-900/[0.08] overflow-hidden"
+              style={{ transform: "rotateY(-2deg) rotateX(1deg)" }}
+            >
+              {/* Mockup header */}
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-cream-200/80">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-gold-500 flex items-center justify-center">
+                    <span className="text-[0.55rem]">📐</span>
                   </div>
+                  <span className="font-display text-[0.8rem] text-charcoal-900">
+                    Hitu<span className="text-gold-600">Quant</span>
+                  </span>
                 </div>
-              );
-            })}
+                <div className="mockup-streak flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-charcoal-900">
+                  <span className="text-[0.65rem]">🔥</span>
+                  <span className="font-mono font-bold text-[0.65rem] text-white">7</span>
+                </div>
+              </div>
 
-            {/* Streak counter */}
-            <div className="hero-card absolute bottom-[6%] right-[12%]">
-              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-charcoal-900 text-white shadow-xl">
-                <span className="text-xl">🔥</span>
-                <div>
-                  <p className="font-mono font-bold text-[1.1rem] leading-tight">7 day streak</p>
-                  <p className="font-body text-[0.65rem] text-white/50">Keep it going!</p>
+              {/* Mockup body — topic rows */}
+              <div className="px-4 py-3 space-y-2.5">
+                {PREVIEW_TOPICS.map((topic) => (
+                  <div
+                    key={topic.name}
+                    className="mockup-row flex items-center gap-3 px-3 py-2.5 rounded-xl border border-cream-200/60 bg-cream-50/50"
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
+                      style={{ background: `${topic.color}12` }}
+                    >
+                      {topic.emoji}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-body font-semibold text-[0.72rem] text-charcoal-900 truncate">
+                        {topic.name}
+                      </p>
+                      <div className="mt-1 w-full h-1.5 bg-cream-200 rounded-full overflow-hidden">
+                        <div
+                          className="mockup-progress-fill h-full rounded-full"
+                          data-progress={topic.progress}
+                          style={{
+                            width: 0,
+                            background: topic.progress > 0 ? topic.color : "transparent",
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <span className="font-mono text-[0.6rem] text-charcoal-600/50 shrink-0">
+                      {topic.progress}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mockup footer — XP bar */}
+              <div className="px-5 py-3 border-t border-cream-200/60 bg-cream-50/30">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-body font-semibold text-[0.65rem] text-charcoal-800">
+                    Level 5
+                  </span>
+                  <span className="font-mono text-[0.6rem] text-charcoal-600/50">
+                    150/300 XP
+                  </span>
+                </div>
+                <div className="w-full h-2 bg-cream-200 rounded-full overflow-hidden">
+                  <div
+                    className="mockup-progress-fill h-full rounded-full"
+                    data-progress={50}
+                    style={{
+                      width: 0,
+                      background: "linear-gradient(90deg, #E69A00, #FFBF3F)",
+                    }}
+                  />
                 </div>
               </div>
             </div>
 
-            {/* XP badge */}
-            <div className="hero-card absolute top-[22%] left-[52%]">
-              <div className="px-3 py-1.5 rounded-xl bg-gold-500 font-mono font-bold text-[0.75rem] text-charcoal-900 shadow-lg shadow-gold-500/30">
-                Level 5 ⚡
-              </div>
+            {/* Decorative floating badges around mockup */}
+            <div
+              className="mockup-streak absolute -top-3 -right-4 px-3 py-1.5 rounded-xl bg-gold-500 font-mono font-bold text-[0.7rem] text-charcoal-900 shadow-lg shadow-gold-500/25 rotate-3"
+            >
+              +12 XP
+            </div>
+            <div
+              className="mockup-streak absolute -bottom-3 -left-3 px-3 py-1.5 rounded-xl bg-success font-mono font-bold text-[0.7rem] text-white shadow-lg shadow-success/25 -rotate-2"
+            >
+              Topic Complete!
             </div>
           </div>
         </div>
       </section>
 
-      {/* Topics marquee ribbon */}
+      {/* Topics marquee */}
       <section className="relative z-10 py-10 border-y border-cream-200/60">
         <div className="px-6 lg:px-16 max-w-7xl mx-auto mb-5">
           <p className="text-[0.75rem] font-body font-semibold text-charcoal-600/50 uppercase tracking-widest">
@@ -405,7 +501,7 @@ export default function LandingPage() {
         <TopicMarquee />
       </section>
 
-      {/* Features Section */}
+      {/* Features */}
       <section className="relative z-10 px-6 lg:px-16 py-20 max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-display text-[2rem] lg:text-[2.5rem] text-charcoal-900 tracking-tight">
@@ -421,7 +517,6 @@ export default function LandingPage() {
               key={f.title}
               className="feature-card group relative card p-6 overflow-hidden"
             >
-              {/* Accent top line */}
               <div
                 className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ background: f.color }}
@@ -449,7 +544,6 @@ export default function LandingPage() {
           ref={ctaSectionRef}
           className="relative rounded-3xl bg-charcoal-900 p-10 lg:p-16 text-center overflow-hidden"
         >
-          {/* Dot pattern */}
           <div
             className="absolute inset-0 opacity-[0.06]"
             style={{
@@ -458,19 +552,29 @@ export default function LandingPage() {
               backgroundSize: "24px 24px",
             }}
           />
-          {/* Brighter gold glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-60 rounded-full blur-[100px] opacity-30 bg-gold-500" />
 
           <h2 className="relative font-display text-[2rem] lg:text-[2.8rem] text-white tracking-tight leading-tight">
-            Stop scrolling PDFs.
+            {["Stop", "scrolling", "PDFs."].map((w, i) => (
+              <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+                <span className="cta-word inline-block">{w}</span>
+              </span>
+            ))}
             <br />
-            Start actually <span className="text-gold-400 italic">learning</span>.
+            {["Start", "actually"].map((w, i) => (
+              <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+                <span className="cta-word inline-block">{w}</span>
+              </span>
+            ))}
+            <span className="inline-block overflow-hidden">
+              <span className="cta-word inline-block text-gold-400 italic">learning.</span>
+            </span>
           </h2>
-          <p className="relative font-body text-[1rem] lg:text-[1.1rem] text-white/70 mt-5 max-w-lg mx-auto leading-relaxed">
+          <p className="cta-body relative font-body text-[1rem] lg:text-[1.1rem] text-white/70 mt-5 max-w-lg mx-auto leading-relaxed">
             Join and start building your streak today. Every resource you
             complete gets you closer to cracking that placement.
           </p>
-          <div className="relative mt-8">
+          <div className="cta-body relative mt-8">
             <SignInButton mode="modal">
               <button className="btn-primary text-[1rem] px-8 py-4">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="shrink-0">
