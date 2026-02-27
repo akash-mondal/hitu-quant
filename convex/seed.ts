@@ -6,42 +6,42 @@ import { internalMutation } from "./_generated/server";
 const TOPIC_DEFS = [
   // ===== QUANTITATIVE (1-16) =====
   { name: "Number Systems", slug: "number-systems", category: "quantitative" as const, description: "Master divisibility, HCF, LCM, remainders, and base conversions.", iconEmoji: "🔢", order: 1, color: "#4F46E5", estimatedMinutes: 90, isLocked: false },
-  { name: "Percentages", slug: "percentages", category: "quantitative" as const, description: "Calculate percentage changes, successive percentages, and real-world applications.", iconEmoji: "💹", order: 2, color: "#7C3AED", estimatedMinutes: 60, isLocked: true },
-  { name: "Profit & Loss", slug: "profit-and-loss", category: "quantitative" as const, description: "Solve problems on cost price, selling price, markup, and discount.", iconEmoji: "💰", order: 3, color: "#2563EB", estimatedMinutes: 60, isLocked: true },
-  { name: "Simple & Compound Interest", slug: "simple-compound-interest", category: "quantitative" as const, description: "Compute SI, CI, effective rates, and population growth problems.", iconEmoji: "🏦", order: 4, color: "#0891B2", estimatedMinutes: 75, isLocked: true },
-  { name: "Ratio & Proportion", slug: "ratio-and-proportion", category: "quantitative" as const, description: "Work with ratios, direct and inverse proportion, and partnership problems.", iconEmoji: "⚖️", order: 5, color: "#059669", estimatedMinutes: 60, isLocked: true },
-  { name: "Averages", slug: "averages", category: "quantitative" as const, description: "Find averages, weighted averages, and solve age-based problems.", iconEmoji: "📊", order: 6, color: "#65A30D", estimatedMinutes: 45, isLocked: true },
-  { name: "Mixtures & Alligations", slug: "mixtures-and-alligations", category: "quantitative" as const, description: "Solve mixture ratios and alligation rule applications.", iconEmoji: "🧪", order: 7, color: "#CA8A04", estimatedMinutes: 60, isLocked: true },
-  { name: "Time Speed & Distance", slug: "time-speed-distance", category: "quantitative" as const, description: "Tackle relative speed, boats & streams, and race problems.", iconEmoji: "🚀", order: 8, color: "#DC2626", estimatedMinutes: 90, isLocked: true },
-  { name: "Time & Work", slug: "time-and-work", category: "quantitative" as const, description: "Solve efficiency-based, pipe & cistern, and alternate work-day problems.", iconEmoji: "⏱️", order: 9, color: "#E11D48", estimatedMinutes: 75, isLocked: true },
-  { name: "Algebra", slug: "algebra", category: "quantitative" as const, description: "Work through linear equations, quadratics, and inequalities.", iconEmoji: "🧮", order: 10, color: "#9333EA", estimatedMinutes: 90, isLocked: true },
-  { name: "Permutations & Combinations", slug: "permutations-combinations", category: "quantitative" as const, description: "Count arrangements, selections, and apply the fundamental counting principle.", iconEmoji: "🎲", order: 11, color: "#C026D3", estimatedMinutes: 90, isLocked: true },
-  { name: "Probability", slug: "probability", category: "quantitative" as const, description: "Compute classical, conditional, and Bayesian probabilities.", iconEmoji: "🎯", order: 12, color: "#DB2777", estimatedMinutes: 75, isLocked: true },
-  { name: "Geometry & Mensuration", slug: "geometry-mensuration", category: "quantitative" as const, description: "Calculate areas, volumes, and properties of geometric shapes.", iconEmoji: "📐", order: 13, color: "#EA580C", estimatedMinutes: 90, isLocked: true },
-  { name: "Trigonometry", slug: "trigonometry", category: "quantitative" as const, description: "Apply trigonometric ratios, identities, and height-distance problems.", iconEmoji: "📏", order: 14, color: "#D97706", estimatedMinutes: 60, isLocked: true },
-  { name: "Data Interpretation", slug: "data-interpretation", category: "quantitative" as const, description: "Read and analyze bar graphs, pie charts, line graphs, and tables.", iconEmoji: "📈", order: 15, color: "#16A34A", estimatedMinutes: 90, isLocked: true },
-  { name: "Data Sufficiency", slug: "data-sufficiency", category: "quantitative" as const, description: "Determine whether given statements provide enough data to answer a question.", iconEmoji: "🔍", order: 16, color: "#0D9488", estimatedMinutes: 60, isLocked: true },
+  { name: "Percentages", slug: "percentages", category: "quantitative" as const, description: "Calculate percentage changes, successive percentages, and real-world applications.", iconEmoji: "💹", order: 2, color: "#7C3AED", estimatedMinutes: 60, isLocked: false },
+  { name: "Profit & Loss", slug: "profit-and-loss", category: "quantitative" as const, description: "Solve problems on cost price, selling price, markup, and discount.", iconEmoji: "💰", order: 3, color: "#2563EB", estimatedMinutes: 60, isLocked: false },
+  { name: "Simple & Compound Interest", slug: "simple-compound-interest", category: "quantitative" as const, description: "Compute SI, CI, effective rates, and population growth problems.", iconEmoji: "🏦", order: 4, color: "#0891B2", estimatedMinutes: 75, isLocked: false },
+  { name: "Ratio & Proportion", slug: "ratio-and-proportion", category: "quantitative" as const, description: "Work with ratios, direct and inverse proportion, and partnership problems.", iconEmoji: "⚖️", order: 5, color: "#059669", estimatedMinutes: 60, isLocked: false },
+  { name: "Averages", slug: "averages", category: "quantitative" as const, description: "Find averages, weighted averages, and solve age-based problems.", iconEmoji: "📊", order: 6, color: "#65A30D", estimatedMinutes: 45, isLocked: false },
+  { name: "Mixtures & Alligations", slug: "mixtures-and-alligations", category: "quantitative" as const, description: "Solve mixture ratios and alligation rule applications.", iconEmoji: "🧪", order: 7, color: "#CA8A04", estimatedMinutes: 60, isLocked: false },
+  { name: "Time Speed & Distance", slug: "time-speed-distance", category: "quantitative" as const, description: "Tackle relative speed, boats & streams, and race problems.", iconEmoji: "🚀", order: 8, color: "#DC2626", estimatedMinutes: 90, isLocked: false },
+  { name: "Time & Work", slug: "time-and-work", category: "quantitative" as const, description: "Solve efficiency-based, pipe & cistern, and alternate work-day problems.", iconEmoji: "⏱️", order: 9, color: "#E11D48", estimatedMinutes: 75, isLocked: false },
+  { name: "Algebra", slug: "algebra", category: "quantitative" as const, description: "Work through linear equations, quadratics, and inequalities.", iconEmoji: "🧮", order: 10, color: "#9333EA", estimatedMinutes: 90, isLocked: false },
+  { name: "Permutations & Combinations", slug: "permutations-combinations", category: "quantitative" as const, description: "Count arrangements, selections, and apply the fundamental counting principle.", iconEmoji: "🎲", order: 11, color: "#C026D3", estimatedMinutes: 90, isLocked: false },
+  { name: "Probability", slug: "probability", category: "quantitative" as const, description: "Compute classical, conditional, and Bayesian probabilities.", iconEmoji: "🎯", order: 12, color: "#DB2777", estimatedMinutes: 75, isLocked: false },
+  { name: "Geometry & Mensuration", slug: "geometry-mensuration", category: "quantitative" as const, description: "Calculate areas, volumes, and properties of geometric shapes.", iconEmoji: "📐", order: 13, color: "#EA580C", estimatedMinutes: 90, isLocked: false },
+  { name: "Trigonometry", slug: "trigonometry", category: "quantitative" as const, description: "Apply trigonometric ratios, identities, and height-distance problems.", iconEmoji: "📏", order: 14, color: "#D97706", estimatedMinutes: 60, isLocked: false },
+  { name: "Data Interpretation", slug: "data-interpretation", category: "quantitative" as const, description: "Read and analyze bar graphs, pie charts, line graphs, and tables.", iconEmoji: "📈", order: 15, color: "#16A34A", estimatedMinutes: 90, isLocked: false },
+  { name: "Data Sufficiency", slug: "data-sufficiency", category: "quantitative" as const, description: "Determine whether given statements provide enough data to answer a question.", iconEmoji: "🔍", order: 16, color: "#0D9488", estimatedMinutes: 60, isLocked: false },
 
   // ===== LOGICAL (17-28) =====
-  { name: "Series", slug: "series", category: "logical" as const, description: "Identify number, letter, and mixed series patterns.", iconEmoji: "🔗", order: 17, color: "#6366F1", estimatedMinutes: 60, isLocked: true },
-  { name: "Analogies", slug: "analogies", category: "logical" as const, description: "Find relationships between word, number, and letter pairs.", iconEmoji: "🔄", order: 18, color: "#8B5CF6", estimatedMinutes: 45, isLocked: true },
-  { name: "Blood Relations", slug: "blood-relations", category: "logical" as const, description: "Decode family tree relationships from given clues.", iconEmoji: "👨‍👩‍👧‍👦", order: 19, color: "#A855F7", estimatedMinutes: 45, isLocked: true },
-  { name: "Direction Sense", slug: "direction-sense", category: "logical" as const, description: "Trace paths and find distances using cardinal directions.", iconEmoji: "🧭", order: 20, color: "#3B82F6", estimatedMinutes: 30, isLocked: true },
-  { name: "Coding-Decoding", slug: "coding-decoding", category: "logical" as const, description: "Crack letter-shift, number-substitution, and symbol codes.", iconEmoji: "🔐", order: 21, color: "#0EA5E9", estimatedMinutes: 45, isLocked: true },
-  { name: "Syllogisms", slug: "syllogisms", category: "logical" as const, description: "Draw conclusions from given statements using Venn-diagram logic.", iconEmoji: "📜", order: 22, color: "#14B8A6", estimatedMinutes: 45, isLocked: true },
-  { name: "Seating Arrangements", slug: "seating-arrangements", category: "logical" as const, description: "Solve linear and circular seating arrangement puzzles.", iconEmoji: "💺", order: 23, color: "#22C55E", estimatedMinutes: 75, isLocked: true },
-  { name: "Puzzles", slug: "puzzles-logical", category: "logical" as const, description: "Solve scheduling, floor, and comparison-based logic puzzles.", iconEmoji: "🧩", order: 24, color: "#84CC16", estimatedMinutes: 90, isLocked: true },
-  { name: "Input-Output", slug: "input-output", category: "logical" as const, description: "Trace machine-input rearrangement patterns step by step.", iconEmoji: "⚙️", order: 25, color: "#EAB308", estimatedMinutes: 60, isLocked: true },
-  { name: "Critical Reasoning", slug: "critical-reasoning", category: "logical" as const, description: "Strengthen, weaken, or identify assumptions in arguments.", iconEmoji: "🧠", order: 26, color: "#F59E0B", estimatedMinutes: 60, isLocked: true },
-  { name: "Venn Diagrams", slug: "venn-diagrams", category: "logical" as const, description: "Represent set relationships and solve min-max overlap problems.", iconEmoji: "⭕", order: 27, color: "#F97316", estimatedMinutes: 45, isLocked: true },
-  { name: "Pattern Recognition", slug: "pattern-recognition", category: "logical" as const, description: "Identify visual, spatial, and abstract reasoning patterns.", iconEmoji: "👁️", order: 28, color: "#EF4444", estimatedMinutes: 45, isLocked: true },
+  { name: "Series", slug: "series", category: "logical" as const, description: "Identify number, letter, and mixed series patterns.", iconEmoji: "🔗", order: 17, color: "#6366F1", estimatedMinutes: 60, isLocked: false },
+  { name: "Analogies", slug: "analogies", category: "logical" as const, description: "Find relationships between word, number, and letter pairs.", iconEmoji: "🔄", order: 18, color: "#8B5CF6", estimatedMinutes: 45, isLocked: false },
+  { name: "Blood Relations", slug: "blood-relations", category: "logical" as const, description: "Decode family tree relationships from given clues.", iconEmoji: "👨‍👩‍👧‍👦", order: 19, color: "#A855F7", estimatedMinutes: 45, isLocked: false },
+  { name: "Direction Sense", slug: "direction-sense", category: "logical" as const, description: "Trace paths and find distances using cardinal directions.", iconEmoji: "🧭", order: 20, color: "#3B82F6", estimatedMinutes: 30, isLocked: false },
+  { name: "Coding-Decoding", slug: "coding-decoding", category: "logical" as const, description: "Crack letter-shift, number-substitution, and symbol codes.", iconEmoji: "🔐", order: 21, color: "#0EA5E9", estimatedMinutes: 45, isLocked: false },
+  { name: "Syllogisms", slug: "syllogisms", category: "logical" as const, description: "Draw conclusions from given statements using Venn-diagram logic.", iconEmoji: "📜", order: 22, color: "#14B8A6", estimatedMinutes: 45, isLocked: false },
+  { name: "Seating Arrangements", slug: "seating-arrangements", category: "logical" as const, description: "Solve linear and circular seating arrangement puzzles.", iconEmoji: "💺", order: 23, color: "#22C55E", estimatedMinutes: 75, isLocked: false },
+  { name: "Puzzles", slug: "puzzles-logical", category: "logical" as const, description: "Solve scheduling, floor, and comparison-based logic puzzles.", iconEmoji: "🧩", order: 24, color: "#84CC16", estimatedMinutes: 90, isLocked: false },
+  { name: "Input-Output", slug: "input-output", category: "logical" as const, description: "Trace machine-input rearrangement patterns step by step.", iconEmoji: "⚙️", order: 25, color: "#EAB308", estimatedMinutes: 60, isLocked: false },
+  { name: "Critical Reasoning", slug: "critical-reasoning", category: "logical" as const, description: "Strengthen, weaken, or identify assumptions in arguments.", iconEmoji: "🧠", order: 26, color: "#F59E0B", estimatedMinutes: 60, isLocked: false },
+  { name: "Venn Diagrams", slug: "venn-diagrams", category: "logical" as const, description: "Represent set relationships and solve min-max overlap problems.", iconEmoji: "⭕", order: 27, color: "#F97316", estimatedMinutes: 45, isLocked: false },
+  { name: "Pattern Recognition", slug: "pattern-recognition", category: "logical" as const, description: "Identify visual, spatial, and abstract reasoning patterns.", iconEmoji: "👁️", order: 28, color: "#EF4444", estimatedMinutes: 45, isLocked: false },
 
   // ===== PUZZLES (29-33) =====
-  { name: "Mathematical Puzzles", slug: "mathematical-puzzles", category: "puzzles" as const, description: "Solve number tricks, magic squares, and arithmetic brain-teasers.", iconEmoji: "🔢", order: 29, color: "#6D28D9", estimatedMinutes: 60, isLocked: true },
-  { name: "Logical Puzzles", slug: "logical-puzzles", category: "puzzles" as const, description: "Crack truth-teller/liar, grid, and constraint-satisfaction puzzles.", iconEmoji: "🧩", order: 30, color: "#4338CA", estimatedMinutes: 60, isLocked: true },
-  { name: "Lateral Thinking", slug: "lateral-thinking", category: "puzzles" as const, description: "Think outside the box with creative and unconventional puzzles.", iconEmoji: "💡", order: 31, color: "#1D4ED8", estimatedMinutes: 45, isLocked: true },
-  { name: "Probability Puzzles", slug: "probability-puzzles", category: "puzzles" as const, description: "Explore counter-intuitive probability scenarios and paradoxes.", iconEmoji: "🎰", order: 32, color: "#1E40AF", estimatedMinutes: 45, isLocked: true },
-  { name: "Classic Interview Puzzles", slug: "classic-interview-puzzles", category: "puzzles" as const, description: "Practice famous puzzles asked at top tech and finance interviews.", iconEmoji: "🏢", order: 33, color: "#1E3A8A", estimatedMinutes: 60, isLocked: true },
+  { name: "Mathematical Puzzles", slug: "mathematical-puzzles", category: "puzzles" as const, description: "Solve number tricks, magic squares, and arithmetic brain-teasers.", iconEmoji: "🔢", order: 29, color: "#6D28D9", estimatedMinutes: 60, isLocked: false },
+  { name: "Logical Puzzles", slug: "logical-puzzles", category: "puzzles" as const, description: "Crack truth-teller/liar, grid, and constraint-satisfaction puzzles.", iconEmoji: "🧩", order: 30, color: "#4338CA", estimatedMinutes: 60, isLocked: false },
+  { name: "Lateral Thinking", slug: "lateral-thinking", category: "puzzles" as const, description: "Think outside the box with creative and unconventional puzzles.", iconEmoji: "💡", order: 31, color: "#1D4ED8", estimatedMinutes: 45, isLocked: false },
+  { name: "Probability Puzzles", slug: "probability-puzzles", category: "puzzles" as const, description: "Explore counter-intuitive probability scenarios and paradoxes.", iconEmoji: "🎰", order: 32, color: "#1E40AF", estimatedMinutes: 45, isLocked: false },
+  { name: "Classic Interview Puzzles", slug: "classic-interview-puzzles", category: "puzzles" as const, description: "Practice famous puzzles asked at top tech and finance interviews.", iconEmoji: "🏢", order: 33, color: "#1E3A8A", estimatedMinutes: 60, isLocked: false },
 ];
 
 // ============================================================
@@ -1309,5 +1309,22 @@ export const clearResources = internalMutation({
     }
 
     return { deleted: allResources.length };
+  },
+});
+
+// ============================================================
+// unlockAll — set isLocked = false on all topics
+// ============================================================
+export const unlockAll = internalMutation({
+  handler: async (ctx) => {
+    const allTopics = await ctx.db.query("topics").collect();
+    let count = 0;
+    for (const topic of allTopics) {
+      if (topic.isLocked) {
+        await ctx.db.patch(topic._id, { isLocked: false });
+        count++;
+      }
+    }
+    return { unlocked: count };
   },
 });
