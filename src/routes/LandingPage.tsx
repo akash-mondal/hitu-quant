@@ -33,9 +33,9 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: 33, label: "Topics", suffix: "" },
-  { value: 80, label: "Subtopics", suffix: "+" },
-  { value: 350, label: "Resources", suffix: "+" },
+  { value: 37, label: "Topics", suffix: "" },
+  { value: 90, label: "Subtopics", suffix: "+" },
+  { value: 500, label: "Resources", suffix: "+" },
   { value: 3, label: "Categories", suffix: "" },
 ];
 
@@ -495,7 +495,7 @@ export default function LandingPage() {
       <section className="relative z-10 py-10 border-y border-cream-200/60">
         <div className="px-6 lg:px-16 max-w-7xl mx-auto mb-5">
           <p className="text-[0.75rem] font-body font-semibold text-charcoal-600/50 uppercase tracking-widest">
-            33 Topics Covered
+            37 Topics Covered
           </p>
         </div>
         <TopicMarquee />

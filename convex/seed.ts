@@ -4,44 +4,48 @@ import { internalMutation } from "./_generated/server";
 // TOPIC DEFINITIONS
 // ============================================================
 const TOPIC_DEFS = [
-  // ===== QUANTITATIVE (1-16) =====
+  // ===== QUANTITATIVE (1-18) — ordered by placement frequency =====
   { name: "Number Systems", slug: "number-systems", category: "quantitative" as const, description: "Master divisibility, HCF, LCM, remainders, and base conversions.", iconEmoji: "🔢", order: 1, color: "#4F46E5", estimatedMinutes: 90, isLocked: false },
   { name: "Percentages", slug: "percentages", category: "quantitative" as const, description: "Calculate percentage changes, successive percentages, and real-world applications.", iconEmoji: "💹", order: 2, color: "#7C3AED", estimatedMinutes: 60, isLocked: false },
   { name: "Profit & Loss", slug: "profit-and-loss", category: "quantitative" as const, description: "Solve problems on cost price, selling price, markup, and discount.", iconEmoji: "💰", order: 3, color: "#2563EB", estimatedMinutes: 60, isLocked: false },
-  { name: "Simple & Compound Interest", slug: "simple-compound-interest", category: "quantitative" as const, description: "Compute SI, CI, effective rates, and population growth problems.", iconEmoji: "🏦", order: 4, color: "#0891B2", estimatedMinutes: 75, isLocked: false },
-  { name: "Ratio & Proportion", slug: "ratio-and-proportion", category: "quantitative" as const, description: "Work with ratios, direct and inverse proportion, and partnership problems.", iconEmoji: "⚖️", order: 5, color: "#059669", estimatedMinutes: 60, isLocked: false },
-  { name: "Averages", slug: "averages", category: "quantitative" as const, description: "Find averages, weighted averages, and solve age-based problems.", iconEmoji: "📊", order: 6, color: "#65A30D", estimatedMinutes: 45, isLocked: false },
-  { name: "Mixtures & Alligations", slug: "mixtures-and-alligations", category: "quantitative" as const, description: "Solve mixture ratios and alligation rule applications.", iconEmoji: "🧪", order: 7, color: "#CA8A04", estimatedMinutes: 60, isLocked: false },
-  { name: "Time Speed & Distance", slug: "time-speed-distance", category: "quantitative" as const, description: "Tackle relative speed, boats & streams, and race problems.", iconEmoji: "🚀", order: 8, color: "#DC2626", estimatedMinutes: 90, isLocked: false },
-  { name: "Time & Work", slug: "time-and-work", category: "quantitative" as const, description: "Solve efficiency-based, pipe & cistern, and alternate work-day problems.", iconEmoji: "⏱️", order: 9, color: "#E11D48", estimatedMinutes: 75, isLocked: false },
+  { name: "Ratio & Proportion", slug: "ratio-and-proportion", category: "quantitative" as const, description: "Work with ratios, direct and inverse proportion, and partnership problems.", iconEmoji: "⚖️", order: 4, color: "#059669", estimatedMinutes: 60, isLocked: false },
+  { name: "Averages", slug: "averages", category: "quantitative" as const, description: "Find averages, weighted averages, and solve age-based problems.", iconEmoji: "📊", order: 5, color: "#65A30D", estimatedMinutes: 45, isLocked: false },
+  { name: "Time & Work", slug: "time-and-work", category: "quantitative" as const, description: "Solve efficiency-based, pipe & cistern, and alternate work-day problems.", iconEmoji: "⏱️", order: 6, color: "#E11D48", estimatedMinutes: 75, isLocked: false },
+  { name: "Time Speed & Distance", slug: "time-speed-distance", category: "quantitative" as const, description: "Tackle relative speed, boats & streams, and race problems.", iconEmoji: "🚀", order: 7, color: "#DC2626", estimatedMinutes: 90, isLocked: false },
+  { name: "Simple & Compound Interest", slug: "simple-compound-interest", category: "quantitative" as const, description: "Compute SI, CI, effective rates, and population growth problems.", iconEmoji: "🏦", order: 8, color: "#0891B2", estimatedMinutes: 75, isLocked: false },
+  { name: "Mixtures & Alligations", slug: "mixtures-and-alligations", category: "quantitative" as const, description: "Solve mixture ratios and alligation rule applications.", iconEmoji: "🧪", order: 9, color: "#CA8A04", estimatedMinutes: 60, isLocked: false },
   { name: "Algebra", slug: "algebra", category: "quantitative" as const, description: "Work through linear equations, quadratics, and inequalities.", iconEmoji: "🧮", order: 10, color: "#9333EA", estimatedMinutes: 90, isLocked: false },
   { name: "Permutations & Combinations", slug: "permutations-combinations", category: "quantitative" as const, description: "Count arrangements, selections, and apply the fundamental counting principle.", iconEmoji: "🎲", order: 11, color: "#C026D3", estimatedMinutes: 90, isLocked: false },
   { name: "Probability", slug: "probability", category: "quantitative" as const, description: "Compute classical, conditional, and Bayesian probabilities.", iconEmoji: "🎯", order: 12, color: "#DB2777", estimatedMinutes: 75, isLocked: false },
-  { name: "Geometry & Mensuration", slug: "geometry-mensuration", category: "quantitative" as const, description: "Calculate areas, volumes, and properties of geometric shapes.", iconEmoji: "📐", order: 13, color: "#EA580C", estimatedMinutes: 90, isLocked: false },
-  { name: "Trigonometry", slug: "trigonometry", category: "quantitative" as const, description: "Apply trigonometric ratios, identities, and height-distance problems.", iconEmoji: "📏", order: 14, color: "#D97706", estimatedMinutes: 60, isLocked: false },
-  { name: "Data Interpretation", slug: "data-interpretation", category: "quantitative" as const, description: "Read and analyze bar graphs, pie charts, line graphs, and tables.", iconEmoji: "📈", order: 15, color: "#16A34A", estimatedMinutes: 90, isLocked: false },
-  { name: "Data Sufficiency", slug: "data-sufficiency", category: "quantitative" as const, description: "Determine whether given statements provide enough data to answer a question.", iconEmoji: "🔍", order: 16, color: "#0D9488", estimatedMinutes: 60, isLocked: false },
+  { name: "Data Interpretation", slug: "data-interpretation", category: "quantitative" as const, description: "Read and analyze bar graphs, pie charts, line graphs, and tables.", iconEmoji: "📈", order: 13, color: "#16A34A", estimatedMinutes: 90, isLocked: false },
+  { name: "Geometry & Mensuration", slug: "geometry-mensuration", category: "quantitative" as const, description: "Calculate areas, volumes, and properties of geometric shapes.", iconEmoji: "📐", order: 14, color: "#EA580C", estimatedMinutes: 90, isLocked: false },
+  { name: "Clocks & Calendars", slug: "clocks-calendars", category: "quantitative" as const, description: "Solve clock angle problems, gaining/losing time, and calendar day-finding using odd days.", iconEmoji: "🕐", order: 15, color: "#0369A1", estimatedMinutes: 60, isLocked: false },
+  { name: "Logarithms, Surds & Indices", slug: "logarithms-surds-indices", category: "quantitative" as const, description: "Master log properties, surd simplification, and laws of exponents.", iconEmoji: "📐", order: 16, color: "#7E22CE", estimatedMinutes: 60, isLocked: false },
+  { name: "Trigonometry", slug: "trigonometry", category: "quantitative" as const, description: "Apply trigonometric ratios, identities, and height-distance problems.", iconEmoji: "📏", order: 17, color: "#D97706", estimatedMinutes: 60, isLocked: false },
+  { name: "Data Sufficiency", slug: "data-sufficiency", category: "quantitative" as const, description: "Determine whether given statements provide enough data to answer a question.", iconEmoji: "🔍", order: 18, color: "#0D9488", estimatedMinutes: 60, isLocked: false },
 
-  // ===== LOGICAL (17-28) =====
-  { name: "Series", slug: "series", category: "logical" as const, description: "Identify number, letter, and mixed series patterns.", iconEmoji: "🔗", order: 17, color: "#6366F1", estimatedMinutes: 60, isLocked: false },
-  { name: "Analogies", slug: "analogies", category: "logical" as const, description: "Find relationships between word, number, and letter pairs.", iconEmoji: "🔄", order: 18, color: "#8B5CF6", estimatedMinutes: 45, isLocked: false },
-  { name: "Blood Relations", slug: "blood-relations", category: "logical" as const, description: "Decode family tree relationships from given clues.", iconEmoji: "👨‍👩‍👧‍👦", order: 19, color: "#A855F7", estimatedMinutes: 45, isLocked: false },
-  { name: "Direction Sense", slug: "direction-sense", category: "logical" as const, description: "Trace paths and find distances using cardinal directions.", iconEmoji: "🧭", order: 20, color: "#3B82F6", estimatedMinutes: 30, isLocked: false },
-  { name: "Coding-Decoding", slug: "coding-decoding", category: "logical" as const, description: "Crack letter-shift, number-substitution, and symbol codes.", iconEmoji: "🔐", order: 21, color: "#0EA5E9", estimatedMinutes: 45, isLocked: false },
-  { name: "Syllogisms", slug: "syllogisms", category: "logical" as const, description: "Draw conclusions from given statements using Venn-diagram logic.", iconEmoji: "📜", order: 22, color: "#14B8A6", estimatedMinutes: 45, isLocked: false },
+  // ===== LOGICAL (19-30) — ordered by placement frequency =====
+  { name: "Series", slug: "series", category: "logical" as const, description: "Identify number, letter, and mixed series patterns.", iconEmoji: "🔗", order: 19, color: "#6366F1", estimatedMinutes: 60, isLocked: false },
+  { name: "Coding-Decoding", slug: "coding-decoding", category: "logical" as const, description: "Crack letter-shift, number-substitution, and symbol codes.", iconEmoji: "🔐", order: 20, color: "#0EA5E9", estimatedMinutes: 45, isLocked: false },
+  { name: "Syllogisms", slug: "syllogisms", category: "logical" as const, description: "Draw conclusions from given statements using Venn-diagram logic.", iconEmoji: "📜", order: 21, color: "#14B8A6", estimatedMinutes: 45, isLocked: false },
+  { name: "Blood Relations", slug: "blood-relations", category: "logical" as const, description: "Decode family tree relationships from given clues.", iconEmoji: "👨‍👩‍👧‍👦", order: 22, color: "#A855F7", estimatedMinutes: 45, isLocked: false },
   { name: "Seating Arrangements", slug: "seating-arrangements", category: "logical" as const, description: "Solve linear and circular seating arrangement puzzles.", iconEmoji: "💺", order: 23, color: "#22C55E", estimatedMinutes: 75, isLocked: false },
   { name: "Puzzles", slug: "puzzles-logical", category: "logical" as const, description: "Solve scheduling, floor, and comparison-based logic puzzles.", iconEmoji: "🧩", order: 24, color: "#84CC16", estimatedMinutes: 90, isLocked: false },
-  { name: "Input-Output", slug: "input-output", category: "logical" as const, description: "Trace machine-input rearrangement patterns step by step.", iconEmoji: "⚙️", order: 25, color: "#EAB308", estimatedMinutes: 60, isLocked: false },
-  { name: "Critical Reasoning", slug: "critical-reasoning", category: "logical" as const, description: "Strengthen, weaken, or identify assumptions in arguments.", iconEmoji: "🧠", order: 26, color: "#F59E0B", estimatedMinutes: 60, isLocked: false },
-  { name: "Venn Diagrams", slug: "venn-diagrams", category: "logical" as const, description: "Represent set relationships and solve min-max overlap problems.", iconEmoji: "⭕", order: 27, color: "#F97316", estimatedMinutes: 45, isLocked: false },
-  { name: "Pattern Recognition", slug: "pattern-recognition", category: "logical" as const, description: "Identify visual, spatial, and abstract reasoning patterns.", iconEmoji: "👁️", order: 28, color: "#EF4444", estimatedMinutes: 45, isLocked: false },
+  { name: "Direction Sense", slug: "direction-sense", category: "logical" as const, description: "Trace paths and find distances using cardinal directions.", iconEmoji: "🧭", order: 25, color: "#3B82F6", estimatedMinutes: 30, isLocked: false },
+  { name: "Analogies", slug: "analogies", category: "logical" as const, description: "Find relationships between word, number, and letter pairs.", iconEmoji: "🔄", order: 26, color: "#8B5CF6", estimatedMinutes: 45, isLocked: false },
+  { name: "Input-Output", slug: "input-output", category: "logical" as const, description: "Trace machine-input rearrangement patterns step by step.", iconEmoji: "⚙️", order: 27, color: "#EAB308", estimatedMinutes: 60, isLocked: false },
+  { name: "Venn Diagrams", slug: "venn-diagrams", category: "logical" as const, description: "Represent set relationships and solve min-max overlap problems.", iconEmoji: "⭕", order: 28, color: "#F97316", estimatedMinutes: 45, isLocked: false },
+  { name: "Critical Reasoning", slug: "critical-reasoning", category: "logical" as const, description: "Strengthen, weaken, or identify assumptions in arguments.", iconEmoji: "🧠", order: 29, color: "#F59E0B", estimatedMinutes: 60, isLocked: false },
+  { name: "Pattern Recognition", slug: "pattern-recognition", category: "logical" as const, description: "Identify visual, spatial, and abstract reasoning patterns.", iconEmoji: "👁️", order: 30, color: "#EF4444", estimatedMinutes: 45, isLocked: false },
 
-  // ===== PUZZLES (29-33) =====
-  { name: "Mathematical Puzzles", slug: "mathematical-puzzles", category: "puzzles" as const, description: "Solve number tricks, magic squares, and arithmetic brain-teasers.", iconEmoji: "🔢", order: 29, color: "#6D28D9", estimatedMinutes: 60, isLocked: false },
-  { name: "Logical Puzzles", slug: "logical-puzzles", category: "puzzles" as const, description: "Crack truth-teller/liar, grid, and constraint-satisfaction puzzles.", iconEmoji: "🧩", order: 30, color: "#4338CA", estimatedMinutes: 60, isLocked: false },
-  { name: "Lateral Thinking", slug: "lateral-thinking", category: "puzzles" as const, description: "Think outside the box with creative and unconventional puzzles.", iconEmoji: "💡", order: 31, color: "#1D4ED8", estimatedMinutes: 45, isLocked: false },
-  { name: "Probability Puzzles", slug: "probability-puzzles", category: "puzzles" as const, description: "Explore counter-intuitive probability scenarios and paradoxes.", iconEmoji: "🎰", order: 32, color: "#1E40AF", estimatedMinutes: 45, isLocked: false },
-  { name: "Classic Interview Puzzles", slug: "classic-interview-puzzles", category: "puzzles" as const, description: "Practice famous puzzles asked at top tech and finance interviews.", iconEmoji: "🏢", order: 33, color: "#1E3A8A", estimatedMinutes: 60, isLocked: false },
+  // ===== PUZZLES & BRAIN TEASERS (31-37) — top-tier company emphasis =====
+  { name: "Classic Interview Puzzles", slug: "classic-interview-puzzles", category: "puzzles" as const, description: "Practice famous puzzles asked at Google, Amazon, Microsoft, and Goldman Sachs interviews.", iconEmoji: "🏢", order: 31, color: "#1E3A8A", estimatedMinutes: 60, isLocked: false },
+  { name: "Game Theory & Expected Value", slug: "game-theory-expected-value", category: "puzzles" as const, description: "Master betting games, optimal strategy, and expected value problems asked at Jane Street, SIG, and Goldman Sachs.", iconEmoji: "🎲", order: 32, color: "#B91C1C", estimatedMinutes: 75, isLocked: false },
+  { name: "Estimation & Fermi Problems", slug: "estimation-fermi-problems", category: "puzzles" as const, description: "Solve 'how many X in Y?' market-sizing and back-of-envelope estimation questions from Google and Amazon.", iconEmoji: "🔭", order: 33, color: "#0F766E", estimatedMinutes: 45, isLocked: false },
+  { name: "Probability Puzzles", slug: "probability-puzzles", category: "puzzles" as const, description: "Explore counter-intuitive probability scenarios and paradoxes tested at quant trading firms.", iconEmoji: "🎰", order: 34, color: "#1E40AF", estimatedMinutes: 45, isLocked: false },
+  { name: "Mathematical Puzzles", slug: "mathematical-puzzles", category: "puzzles" as const, description: "Solve number tricks, magic squares, and arithmetic brain-teasers.", iconEmoji: "🔢", order: 35, color: "#6D28D9", estimatedMinutes: 60, isLocked: false },
+  { name: "Logical Puzzles", slug: "logical-puzzles", category: "puzzles" as const, description: "Crack truth-teller/liar, grid, and constraint-satisfaction puzzles.", iconEmoji: "🧩", order: 36, color: "#4338CA", estimatedMinutes: 60, isLocked: false },
+  { name: "Lateral Thinking", slug: "lateral-thinking", category: "puzzles" as const, description: "Think outside the box with creative and unconventional puzzles.", iconEmoji: "💡", order: 37, color: "#1D4ED8", estimatedMinutes: 45, isLocked: false },
 ];
 
 // ============================================================
@@ -135,6 +139,18 @@ const SUBTOPIC_DEFS: Record<string, { name: string; slug: string; description: s
     { name: "Logical DS", slug: "logical-ds", description: "Evaluating sufficiency of logic-based statements." },
     { name: "Combined Statements", slug: "combined-statements", description: "When both statements together are needed to conclude." },
   ],
+  "clocks-calendars": [
+    { name: "Clock Angle Problems", slug: "clock-angle-problems", description: "Calculate the angle between hour and minute hands at any given time." },
+    { name: "Clocks Gaining & Losing", slug: "clocks-gaining-losing", description: "Solve problems where faulty clocks gain or lose time." },
+    { name: "Calendar Odd Days", slug: "calendar-odd-days", description: "Use the odd days method to determine the day of the week for any date." },
+    { name: "Calendar Day Finding", slug: "calendar-day-finding", description: "Leap year rules, century codes, and quick day calculations." },
+  ],
+  "logarithms-surds-indices": [
+    { name: "Logarithm Basics & Properties", slug: "logarithm-basics-properties", description: "Log rules, change of base formula, and simplification techniques." },
+    { name: "Logarithmic Equations", slug: "logarithmic-equations", description: "Solving equations involving logarithmic and exponential expressions." },
+    { name: "Surds & Simplification", slug: "surds-simplification", description: "Rationalizing surds, conjugates, and simplification of radical expressions." },
+    { name: "Indices & Powers", slug: "indices-powers", description: "Laws of exponents, comparing powers, and solving exponential equations." },
+  ],
   // ===== LOGICAL =====
   "series": [
     { name: "Number Series", slug: "number-series", description: "Find missing or wrong terms in number patterns." },
@@ -222,6 +238,16 @@ const SUBTOPIC_DEFS: Record<string, { name: string; slug: string; description: s
     { name: "Strategy Puzzles", slug: "strategy-puzzles", description: "Optimal strategy problems like the prisoner's dilemma." },
     { name: "Famous Brain Teasers", slug: "famous-brain-teasers", description: "Well-known puzzles from Google, Goldman Sachs, and other top companies." },
   ],
+  "game-theory-expected-value": [
+    { name: "Expected Value Problems", slug: "expected-value-problems", description: "Calculate expected values for dice, coins, cards, and betting scenarios." },
+    { name: "Betting & Strategy Games", slug: "betting-strategy-games", description: "Optimal betting strategies, Kelly criterion basics, and risk/reward analysis." },
+    { name: "Sequential Strategy Games", slug: "sequential-strategy-games", description: "First-to-N games, Nim, turn-based optimal play, and game trees." },
+  ],
+  "estimation-fermi-problems": [
+    { name: "Fermi Estimation Basics", slug: "fermi-estimation-basics", description: "Framework for order-of-magnitude estimation and breaking down unknowns." },
+    { name: "Market Sizing Questions", slug: "market-sizing-questions", description: "How many X in Y? Structured approach to market size estimation." },
+    { name: "Back-of-Envelope Calculations", slug: "back-of-envelope-calculations", description: "Quick calculations with reasonable assumptions for real-world quantities." },
+  ],
 };
 
 // ============================================================
@@ -238,7 +264,7 @@ const BADGE_DEFS = [
   { slug: "completed-500", name: "Grand Scholar", description: "Complete 500 resources", iconEmoji: "👑", category: "milestone" as const, rarity: "legendary" as const, triggerType: "resources_completed", triggerValue: 500, xpReward: 500, gemReward: 250 },
   { slug: "topic-first", name: "Topic Tamer", description: "Complete your first topic", iconEmoji: "⭐", category: "mastery" as const, rarity: "common" as const, triggerType: "topics_completed", triggerValue: 1, xpReward: 50, gemReward: 20 },
   { slug: "topic-10", name: "Multi-Master", description: "Complete 10 topics", iconEmoji: "🌟", category: "mastery" as const, rarity: "epic" as const, triggerType: "topics_completed", triggerValue: 10, xpReward: 300, gemReward: 150 },
-  { slug: "topic-all", name: "Placement Ready", description: "Complete all 33 topics", iconEmoji: "🎓", category: "mastery" as const, rarity: "legendary" as const, triggerType: "topics_completed", triggerValue: 33, xpReward: 1000, gemReward: 500 },
+  { slug: "topic-all", name: "Placement Ready", description: "Complete all 37 topics", iconEmoji: "🎓", category: "mastery" as const, rarity: "legendary" as const, triggerType: "topics_completed", triggerValue: 37, xpReward: 1000, gemReward: 500 },
   { slug: "early-bird", name: "Early Bird", description: "Study before 8 AM IST", iconEmoji: "🌅", category: "consistency" as const, rarity: "common" as const, triggerType: "early_practice", triggerValue: 1, xpReward: 10, gemReward: 5 },
   { slug: "night-owl", name: "Night Owl", description: "Study after 11 PM IST", iconEmoji: "🦉", category: "consistency" as const, rarity: "common" as const, triggerType: "late_practice", triggerValue: 1, xpReward: 10, gemReward: 5 },
   { slug: "league-gold", name: "Gold League", description: "Reach Gold League", iconEmoji: "🥇", category: "social" as const, rarity: "rare" as const, triggerType: "league_tier", triggerValue: 3, xpReward: 50, gemReward: 25 },
@@ -1081,6 +1107,100 @@ const RESOURCE_DEFS: Record<
     { title: "Paper Folding — Non-Verbal Reasoning Practice", url: "https://www.indiabix.com/non-verbal-reasoning/paper-folding/", type: "practice", source: "IndiaBIX", description: "4 sections of paper folding MCQ problems where transparent sheets with patterns are folded along dotted lines — with answer explanations.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 10 },
     { title: "Paper Cutting Practice Questions and Solutions", url: "https://www.studyandscore.com/practice-test-exam/paper-cutting-practice-questions-and-solutions-test-1", type: "practice", source: "Study & Score", description: "Paper cutting practice test with folding sequence figures (X, Y, Z) and unfolded pattern identification across 5 pages of problems.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 10 },
   ],
+
+  // ===== TOPIC: GAME THEORY & EXPECTED VALUE =====
+  "expected-value-problems": [
+    { title: "Quant Interview Questions #5 — Expected Value", url: "https://www.youtube.com/watch?v=Dl6KGNA_IXw", type: "video", source: "My Quantitative", description: "15-min walkthrough of expected value problems commonly asked in quant trading interviews at Jane Street, SIG, and Citadel. Covers dice, coin, and card scenarios.", estimatedMinutes: 16, difficulty: "advanced", xpReward: 12 },
+    { title: "Die Rolling Problems — Dice Game & Probability | Quant Interview", url: "https://www.youtube.com/watch?v=2IO-gxutfoM", type: "video", source: "Open Math Camp", description: "22-min tutorial on die-rolling expected value problems — includes payoff calculation, optimal stopping, and classic quant interview dice games.", estimatedMinutes: 23, difficulty: "advanced", xpReward: 12 },
+    { title: "Expected Value — Brilliant Math & Science Wiki", url: "https://brilliant.org/wiki/expected-value/", type: "article", source: "Brilliant.org", description: "Comprehensive wiki covering expected value theory, linearity of expectation, and worked competition-style problems with interactive challenges.", estimatedMinutes: 20, difficulty: "intermediate", xpReward: 10 },
+    { title: "Expected Value and Variance — GeeksforGeeks", url: "https://www.geeksforgeeks.org/expected-value-and-variance/", type: "article", source: "GeeksforGeeks", description: "Detailed article on expected value and variance with formulas, properties, and solved examples including dice rolls, insurance, and lottery calculations.", estimatedMinutes: 18, difficulty: "intermediate", xpReward: 8 },
+    { title: "OpenQuant — 185 Quant Interview Questions (Expected Value & Probability)", url: "https://openquant.co/questions", type: "practice", source: "OpenQuant", description: "185 quant interview practice questions including dice EV, card games, and probability puzzles. Filter by topic and difficulty. Free with progress tracking.", estimatedMinutes: 45, difficulty: "advanced", xpReward: 15 },
+  ],
+  "betting-strategy-games": [
+    { title: "Jane Street Quant Trading Interview — Optimal Coin Flip Betting", url: "https://www.youtube.com/watch?v=gQJTkuEVPrU", type: "video", source: "Quant Blueprint", description: "Real Jane Street interview walkthrough: $100 betting on fair coin flips over 100 rounds. Covers optimal bet sizing, Kelly criterion intuition, and risk management.", estimatedMinutes: 20, difficulty: "advanced", xpReward: 12 },
+    { title: "The Kelly Criterion — Optimal Betting Strategy Explained", url: "https://www.youtube.com/watch?v=-9JM9suCIHs", type: "video", source: "Mutual Information", description: "9-min clear explanation of the Kelly Criterion for optimal bet sizing with known probabilities. 147K+ views. Covers the math behind maximizing long-term growth.", estimatedMinutes: 9, difficulty: "advanced", xpReward: 10 },
+    { title: "Expected Payoff of a Dice Game — JP Morgan Interview", url: "https://www.youtube.com/watch?v=bAgZ-Yl3jrI", type: "video", source: "Eat That Logic", description: "Past JP Morgan interview question: roll a die up to 3 times, earn face value, and decide when to stop. Teaches optimal stopping and expected payoff maximization.", estimatedMinutes: 8, difficulty: "advanced", xpReward: 10 },
+    { title: "Tradermath — Top 50 Trading Interview Brainteasers", url: "https://www.tradermath.org/brainteasers/top-50", type: "practice", source: "Tradermath", description: "The 50 most frequently asked brainteasers in trading interviews, filterable by firm (Jane Street, SIG, Goldman Sachs, Citadel) and category (Probability, Reasoning, Math).", estimatedMinutes: 60, difficulty: "advanced", xpReward: 15 },
+  ],
+  "sequential-strategy-games": [
+    { title: "NIM, or, Always WIN with Math", url: "https://www.youtube.com/watch?v=niMjxNtiuu8", type: "video", source: "Mathologer", description: "20-min deep dive into the Nim game strategy using binary XOR. 218K+ views. Covers the complete winning strategy with mathematical proof and movie references.", estimatedMinutes: 20, difficulty: "advanced", xpReward: 12 },
+    { title: "Game Theory 101: Backward Induction", url: "https://www.youtube.com/watch?v=5hizjGzs8_E", type: "video", source: "William Spaniel", description: "5-min lecture on solving sequential games using backward induction — covers subgame perfect equilibrium, escalation games, and extensive form game trees. 42K+ views.", estimatedMinutes: 5, difficulty: "intermediate", xpReward: 8 },
+    { title: "Sprague-Grundy Theorem & Nim — Algorithms for Competitive Programming", url: "https://cp-algorithms.com/game_theory/sprague-grundy-nim.html", type: "article", source: "CP-Algorithms", description: "Comprehensive reference on the Sprague-Grundy theorem for impartial two-player games. Covers Nim values, XOR strategy, and composite game analysis with code.", estimatedMinutes: 25, difficulty: "advanced", xpReward: 12 },
+    { title: "Backward Induction — Investopedia Game Theory Guide", url: "https://www.investopedia.com/terms/b/backward-induction.asp", type: "article", source: "Investopedia", description: "Accessible explanation of backward induction in sequential games with the Centipede Game example. Covers practical applications in economics and finance interviews.", estimatedMinutes: 12, difficulty: "intermediate", xpReward: 8 },
+    { title: "Practice Problems on Game Theory — GeeksforGeeks", url: "https://www.geeksforgeeks.org/dsa/practice-problems-on-game-theory/", type: "practice", source: "GeeksforGeeks", description: "Collection of game theory practice problems covering Nim, Grundy numbers, stone games, and optimal play — with coding solutions and editorial explanations.", estimatedMinutes: 40, difficulty: "advanced", xpReward: 15 },
+  ],
+
+  // ===== TOPIC: CLOCKS & CALENDARS =====
+  "clock-angle-problems": [
+    { title: "Clocks — Tricks & Shortcuts for Placement Tests, Job Interviews & Exams", url: "https://www.youtube.com/watch?v=edEvlh0tqzk", type: "video", source: "CareerRide", description: "Comprehensive 1-hour session covering clock angle formulas, mirror image problems, and all clock tricks with solved examples for placements.", estimatedMinutes: 72, difficulty: "intermediate", xpReward: 12 },
+    { title: "Clock — Finding Angle between Hour and Minute Hand", url: "https://www.youtube.com/watch?v=_up3mXnsVEc", type: "video", source: "Feel Free to Learn", description: "Detailed 42-min tutorial covering clock basics, angle formula method θ=|30H−5.5M|, and important notes with multiple solved examples.", estimatedMinutes: 42, difficulty: "intermediate", xpReward: 10 },
+    { title: "Clocks — Formulas, Concepts and Shortcuts for Aptitude", url: "https://www.geeksforgeeks.org/aptitude/clocks-aptitude/", type: "article", source: "GeeksforGeeks", description: "Complete reference covering minute spaces, angle formula, hands coinciding/opposite, and clock gain-loss concepts.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 8 },
+    { title: "Clock — Aptitude Questions and Answers", url: "https://www.indiabix.com/aptitude/clock/", type: "practice", source: "IndiaBIX", description: "Practice MCQs on clock angles, reflex angles, hands coinciding, and straight-line problems with detailed solutions.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "clocks-gaining-losing": [
+    { title: "How much in a day does the clock gain or lose? — Clock Aptitude", url: "https://www.youtube.com/watch?v=Wtff2Mab1Dk", type: "video", source: "Aptitude Avenue", description: "Explains how to solve problems where minute hand overtakes hour hand at given intervals and calculate daily gain or loss.", estimatedMinutes: 10, difficulty: "intermediate", xpReward: 10 },
+    { title: "A watch which gains uniformly — Clock Gain/Loss Problems", url: "https://www.youtube.com/watch?v=WB1zaUpzL3k", type: "video", source: "Aptitude Avenue", description: "Step-by-step solution of faulty clock problems where a watch gains uniformly and you must find when it showed correct time.", estimatedMinutes: 10, difficulty: "intermediate", xpReward: 10 },
+    { title: "Clocks — Complete Concepts including Faulty Clocks", url: "https://www.geeksforgeeks.org/clocks-aptitude/", type: "article", source: "GeeksforGeeks", description: "Covers clock gain/loss formulas, faulty clock concepts, calculating correct time from fast/slow clocks, with worked examples.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 8 },
+    { title: "Clocks Quiz — Placement Practice Questions including Gain & Loss", url: "https://www.geeksforgeeks.org/quizzes/clocks-clocks-clocks-gq/", type: "practice", source: "GeeksforGeeks", description: "Timed quiz with MCQs on clock gain/loss, finding original time from faulty clocks, and angle problems.", estimatedMinutes: 20, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "calendar-odd-days": [
+    { title: "Calendar — Complete Concept, Tricks & Shortcuts for Placements", url: "https://www.youtube.com/watch?v=oxc4G14nyUY", type: "video", source: "CareerRide", description: "Full tricks and shortcuts session covering odd days concept, leap year rules, and calendar reasoning for placement tests.", estimatedMinutes: 45, difficulty: "intermediate", xpReward: 10 },
+    { title: "How to Calculate Odd Days in a Year — Calendar Tricks", url: "https://www.youtube.com/watch?v=i4m3ZJmofKE", type: "video", source: "Letstute", description: "Quick and clear explanation of how to calculate odd days in a year, century, and given period for calendar problems.", estimatedMinutes: 5, difficulty: "intermediate", xpReward: 8 },
+    { title: "Calendars — Odd Days Concept, Formulas and Tricks", url: "https://www.geeksforgeeks.org/aptitude/calendars/", type: "article", source: "GeeksforGeeks", description: "Complete reference on odd days in 100/200/300/400 years, leap year rules, day codes, and step-by-step method to find the day of any date.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 8 },
+    { title: "Calendar — Aptitude Questions and Answers", url: "https://www.indiabix.com/aptitude/calendar/", type: "practice", source: "IndiaBIX", description: "Practice MCQs on odd days calculation, finding day of the week for given dates, with detailed explanations.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "calendar-day-finding": [
+    { title: "Calendar Problem Tricks — Complete Reasoning Concept & Solutions", url: "https://www.youtube.com/watch?v=2VaFE35CjA4", type: "video", source: "Dear Sir", description: "Massively popular 33-min video (9M+ views) covering complete calendar chapter — finding day of any date with tricks and solved problems.", estimatedMinutes: 34, difficulty: "intermediate", xpReward: 10 },
+    { title: "Find the Day of Any Date — Calendar Problems — Complete Concept", url: "https://www.youtube.com/watch?v=KgOhcg92Fdc", type: "video", source: "Suresh Aggarwal", description: "Learn to find the day of any past or future date in just 15 seconds using a shortcut method with multiple worked examples.", estimatedMinutes: 19, difficulty: "intermediate", xpReward: 10 },
+    { title: "Tricks to Solve Calendar Problems — Day Finding Methods", url: "https://www.geeksforgeeks.org/tricks-to-solve-calendar-problems/", type: "article", source: "GeeksforGeeks", description: "Step-by-step methods for finding the day of any date including day codes, century codes, month codes, and shortcut formulas.", estimatedMinutes: 12, difficulty: "intermediate", xpReward: 8 },
+    { title: "Clocks and Calendar Questions and Answers", url: "https://prepinsta.com/clocks-and-calendars/questions/", type: "practice", source: "PrepInsta", description: "Practice questions on finding day of the week for given dates, calendar matching, and mixed clocks-calendar problems.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 12 },
+  ],
+
+  // ===== TOPIC: LOGARITHMS, SURDS & INDICES =====
+  "logarithm-basics-properties": [
+    { title: "Logarithms — Shortcuts & Tricks for Placement Tests & Exams", url: "https://www.youtube.com/watch?v=w-7mbazOx6o", type: "video", source: "CareerRide", description: "Comprehensive 1-hour session covering all logarithm shortcuts and tricks for placement tests and competitive exams.", estimatedMinutes: 63, difficulty: "intermediate", xpReward: 12 },
+    { title: "Aptitude Made Easy — Problems on Logarithms Full Series", url: "https://www.youtube.com/watch?v=le5D8_q094U", type: "video", source: "Freshersworld", description: "Complete series on logarithm problems covering basic properties, formulas, and aptitude tricks for campus placement preparation.", estimatedMinutes: 22, difficulty: "intermediate", xpReward: 10 },
+    { title: "Properties of Logarithms — GeeksforGeeks", url: "https://www.geeksforgeeks.org/properties-of-logarithms/", type: "article", source: "GeeksforGeeks", description: "Detailed article covering product rule, quotient rule, power rule, and change of base formula with examples.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 8 },
+    { title: "Logarithm Aptitude Questions and Answers", url: "https://www.indiabix.com/aptitude/logarithm/", type: "practice", source: "IndiaBIX", description: "MCQ practice set on logarithm basics and properties with solved examples and detailed explanations.", estimatedMinutes: 30, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "logarithmic-equations": [
+    { title: "Logarithms Aptitude Tricks — Quantitative Aptitude", url: "https://www.youtube.com/watch?v=7qacoYJHnaI", type: "video", source: "S Chand Academy", description: "Covers all logarithm concepts with examples including solving logarithmic equations for SSC, Banking, and placement exams.", estimatedMinutes: 43, difficulty: "intermediate", xpReward: 10 },
+    { title: "Solving Logarithmic Equations — Algebra II", url: "https://www.youtube.com/watch?v=Kv2iHde7Xgw", type: "video", source: "Khan Academy", description: "Clear explanation of techniques to solve logarithmic equations step-by-step with base conversion and algebraic manipulation.", estimatedMinutes: 4, difficulty: "intermediate", xpReward: 8 },
+    { title: "Solving Logarithmic Equations — GeeksforGeeks", url: "https://www.geeksforgeeks.org/solving-logarithmic-equations/", type: "article", source: "GeeksforGeeks", description: "Comprehensive article on solving logarithmic equations covering common properties, step-by-step methods, and worked examples.", estimatedMinutes: 20, difficulty: "intermediate", xpReward: 8 },
+    { title: "Logarithm Questions and Answers — PrepInsta", url: "https://prepinsta.com/logarithm/questions/", type: "practice", source: "PrepInsta", description: "Practice questions on logarithmic equations tailored for TCS, Wipro, Cognizant placement preparation.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "surds-simplification": [
+    { title: "Surds and Indices — Quantitative Aptitude", url: "https://www.youtube.com/watch?v=jELDzfVm0tc", type: "video", source: "S Chand Academy", description: "Complete tutorial covering surds concepts, simplification techniques, and rationalization with examples for competitive exams.", estimatedMinutes: 39, difficulty: "intermediate", xpReward: 10 },
+    { title: "Power Indices & Surds — Simplification Tricks", url: "https://www.youtube.com/watch?v=N7zzJ-Hoq64", type: "video", source: "Imran Sir Maths", description: "Covers power indices and surds simplification tricks useful for SSC, banking, and placement exams.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 10 },
+    { title: "What are Surds? Types, Rules, Properties and Examples", url: "https://www.geeksforgeeks.org/what-are-surds/", type: "article", source: "GeeksforGeeks", description: "Detailed article on surds covering definition, types (pure, mixed, compound), rules for simplification, and rationalization.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 8 },
+    { title: "Surds and Indices Aptitude Questions and Answers", url: "https://www.indiabix.com/aptitude/surds-and-indices/", type: "practice", source: "IndiaBIX", description: "MCQ practice set on surds simplification and indices with solved examples for CAT, GATE, and placement exams.", estimatedMinutes: 30, difficulty: "intermediate", xpReward: 12 },
+  ],
+  "indices-powers": [
+    { title: "Surds and Indices Short Tricks — Unique Approach", url: "https://www.youtube.com/watch?v=fQ6vF5zgzTk", type: "video", source: "Quick Tricks By Sahil Sir", description: "Short tricks and unique approaches to solve indices and exponent problems quickly for competitive exams.", estimatedMinutes: 8, difficulty: "intermediate", xpReward: 10 },
+    { title: "Surds and Indices Tricks — Concept, Properties & Questions", url: "https://www.youtube.com/watch?v=klSTkWOaCTw", type: "video", source: "Career Definer", description: "Complete concept coverage of indices laws, properties, and question-solving techniques for placement exams.", estimatedMinutes: 33, difficulty: "intermediate", xpReward: 10 },
+    { title: "Surd and Indices in Mathematics — GeeksforGeeks", url: "https://www.geeksforgeeks.org/surd-and-indices-in-mathematics/", type: "article", source: "GeeksforGeeks", description: "Comprehensive article covering laws of indices (product, quotient, power rules), definitions, and applications.", estimatedMinutes: 18, difficulty: "intermediate", xpReward: 8 },
+    { title: "Surds and Indices Questions and Answers — PrepInsta", url: "https://prepinsta.com/surds-and-indices/questions/", type: "practice", source: "PrepInsta", description: "Practice questions on indices and powers for Wipro, Cognizant, TCS placement preparation.", estimatedMinutes: 25, difficulty: "intermediate", xpReward: 12 },
+  ],
+
+  // ===== TOPIC: ESTIMATION & FERMI PROBLEMS =====
+  "fermi-estimation-basics": [
+    { title: "One Weird Math Trick Estimates ANYTHING (Fermi Problems)", url: "https://www.youtube.com/watch?v=INlPbfBGPtw", type: "video", source: "Kyle Hill", description: "Entertaining deep-dive into Fermi estimation: how Enrico Fermi estimated the Trinity test yield, landmark numbers, and step-by-step practice problems.", estimatedMinutes: 23, difficulty: "intermediate", xpReward: 10 },
+    { title: "How To Answer Complex Questions IN SECONDS! (Fermi Estimates)", url: "https://www.youtube.com/watch?v=KAo6Vn5bDF0", type: "video", source: "UNDATABLE", description: "Focused on data science and tech interviews at Google, McKinsey, Amazon. Covers landmark numbers and guesstimate techniques.", estimatedMinutes: 7, difficulty: "intermediate", xpReward: 10 },
+    { title: "Fermi Estimate — Brilliant Math & Science Wiki", url: "https://brilliant.org/wiki/fermi-estimate/", type: "article", source: "Brilliant.org", description: "Comprehensive wiki covering Fermi estimation theory, back-of-the-envelope techniques, and worked examples like piano tuners in Chicago.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 10 },
+    { title: "Fermi Questions — Complete Guide with Problem Sets", url: "https://www.tmoritani.com/Science/PDF/9627_FermiQuestionsHandout.pdf", type: "practice", source: "Science Olympiad", description: "Comprehensive PDF guide for Fermi Questions with introduction, sample illustrations, solving strategies, and multiple practice problem sets.", estimatedMinutes: 45, difficulty: "intermediate", xpReward: 15 },
+  ],
+  "market-sizing-questions": [
+    { title: "Learn Consulting Market Sizing in 7 Minutes", url: "https://www.youtube.com/watch?v=Qz2DJ9QYYA0", type: "video", source: "Hacking the Case Interview", description: "Concise framework for market sizing questions used in McKinsey, BCG, and Bain interviews. Covers bottom-up and top-down approaches.", estimatedMinutes: 7, difficulty: "intermediate", xpReward: 10 },
+    { title: "McKinsey Case Interview: Market Sizing Walkthrough", url: "https://www.youtube.com/watch?v=HYGIoe-QXhU", type: "video", source: "Management Consulted", description: "Ex-McKinsey consultant works through a full market sizing case live, demonstrating how to structure the problem and arrive at a defensible estimate.", estimatedMinutes: 26, difficulty: "intermediate", xpReward: 12 },
+    { title: "Market Sizing: The Ultimate Guide (inc Framework and Cheat Sheet)", url: "https://igotanoffer.com/blogs/mckinsey-case-interview-blog/market-sizing", type: "article", source: "IGotAnOffer", description: "Comprehensive guide covering market sizing frameworks, cheat sheets, top-down vs bottom-up approaches for McKinsey, BCG, Bain interviews.", estimatedMinutes: 20, difficulty: "intermediate", xpReward: 10 },
+    { title: "21 Market Sizing Questions with Answers (McKinsey, BCG, etc.)", url: "https://igotanoffer.com/blogs/mckinsey-case-interview-blog/market-sizing-questions", type: "practice", source: "IGotAnOffer", description: "Collection of 21 real market sizing questions asked at McKinsey, BCG, and Bain with detailed step-by-step answer walkthroughs.", estimatedMinutes: 60, difficulty: "advanced", xpReward: 15 },
+  ],
+  "back-of-envelope-calculations": [
+    { title: "Back-Of-The-Envelope Estimation / Capacity Planning", url: "https://www.youtube.com/watch?v=UC5xf8FbdJc", type: "video", source: "ByteByteGo", description: "System design focused tutorial on back-of-the-envelope math for capacity planning with practical tips from the System Design Interview book authors.", estimatedMinutes: 9, difficulty: "intermediate", xpReward: 10 },
+    { title: "How to Solve Capacity Estimation Problems Faster — Thumb Rules", url: "https://www.youtube.com/watch?v=VBw703pjC3E", type: "video", source: "sudoCODE", description: "Practical thumb rules and quick calculation shortcuts for capacity estimation in system design interviews for FAANG.", estimatedMinutes: 9, difficulty: "intermediate", xpReward: 10 },
+    { title: "Back of the Envelope Estimation in System Design", url: "https://www.geeksforgeeks.org/back-of-the-envelope-estimation-in-system-design/", type: "article", source: "GeeksforGeeks", description: "Detailed article covering traffic estimation, storage calculations, bandwidth planning, and server capacity for system design.", estimatedMinutes: 15, difficulty: "intermediate", xpReward: 10 },
+    { title: "Back of the Envelope Calculation: A Practical Guide", url: "https://www.systemdesignhandbook.com/guides/back-of-the-envelope-calculation/", type: "website", source: "System Design Handbook", description: "Practical guide covering estimation under uncertainty with worked examples for storage, QPS, and latency calculations.", estimatedMinutes: 20, difficulty: "intermediate", xpReward: 10 },
+  ],
 };
 
 // ============================================================
@@ -1326,5 +1446,24 @@ export const unlockAll = internalMutation({
       }
     }
     return { unlocked: count };
+  },
+});
+
+// ============================================================
+// reorderTopics — update order field on all topics to match TOPIC_DEFS
+// ============================================================
+export const reorderTopics = internalMutation({
+  handler: async (ctx) => {
+    const orderMap = new Map(TOPIC_DEFS.map((t) => [t.slug, t.order]));
+    const allTopics = await ctx.db.query("topics").collect();
+    let updated = 0;
+    for (const topic of allTopics) {
+      const newOrder = orderMap.get(topic.slug);
+      if (newOrder !== undefined && newOrder !== topic.order) {
+        await ctx.db.patch(topic._id, { order: newOrder });
+        updated++;
+      }
+    }
+    return { updated };
   },
 });
