@@ -17,7 +17,7 @@ export default function Sidebar() {
           <span className="text-lg leading-none mt-0.5">📐</span>
         </div>
         <span className="font-display text-[1.35rem] text-charcoal-900 tracking-tight">
-          Hitu<span className="text-gold-600">Quant</span>
+          Quant<span className="text-gold-600">Buddy</span>
         </span>
       </Link>
 

@@ -55,7 +55,7 @@ export default function XPPopup({ amount, onDone }: Props) {
           }}
           transition={{ duration: 1.2, repeat: 1 }}
         >
-          <span className="text-5xl">⚡</span>
+          <span className="text-5xl">&#x26A1;</span>
         </motion.div>
 
         {/* XP amount */}
@@ -74,12 +74,11 @@ export default function XPPopup({ amount, onDone }: Props) {
           +{amount} XP
         </motion.div>
 
-        {/* Fade out */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0, 1] }}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: [0, 0, 1], y: 0 }}
           transition={{ duration: 1.5, times: [0, 0.7, 1] }}
-          className="font-body text-[0.8rem] text-charcoal-600/50"
+          className="font-body text-center text-[0.8rem] text-charcoal-600/50 max-w-[260px]"
         >
           Nice work!
         </motion.div>

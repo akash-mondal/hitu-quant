@@ -321,7 +321,7 @@ export default function LandingPage() {
             <span className="text-lg leading-none mt-0.5">📐</span>
           </div>
           <span className="font-display text-[1.4rem] text-charcoal-900 tracking-tight">
-            Hitu<span className="text-gold-600">Quant</span>
+            Quant<span className="text-gold-600">Buddy</span>
           </span>
         </div>
         <SignInButton mode="modal">
@@ -409,7 +409,7 @@ export default function LandingPage() {
                     <span className="text-[0.55rem]">📐</span>
                   </div>
                   <span className="font-display text-[0.8rem] text-charcoal-900">
-                    Hitu<span className="text-gold-600">Quant</span>
+                    Quant<span className="text-gold-600">Buddy</span>
                   </span>
                 </div>
                 <div className="mockup-streak flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-charcoal-900">
@@ -598,7 +598,7 @@ export default function LandingPage() {
               <span className="text-[0.7rem]">📐</span>
             </div>
             <span className="font-display text-sm text-charcoal-800">
-              Hitu<span className="text-gold-600">Quant</span>
+              Quant<span className="text-gold-600">Buddy</span>
             </span>
           </div>
           <p className="font-body text-[0.75rem] text-charcoal-700/40">

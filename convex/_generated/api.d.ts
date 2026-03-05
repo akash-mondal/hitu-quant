@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as ai from "../ai.js";
 import type * as gems from "../gems.js";
 import type * as lib_constants from "../lib/constants.js";
 import type * as lib_helpers from "../lib/helpers.js";
@@ -23,6 +24,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  ai: typeof ai;
   gems: typeof gems;
   "lib/constants": typeof lib_constants;
   "lib/helpers": typeof lib_helpers;

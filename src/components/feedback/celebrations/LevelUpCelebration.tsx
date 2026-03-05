@@ -78,8 +78,8 @@ export default function LevelUpCelebration({ level, onDone }: Props) {
         animate={{ opacity: 1 }}
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(255,176,32,0.15) 0%, rgba(10,10,10,0.85) 100%)",
-          backdropFilter: "blur(12px)",
+            "radial-gradient(ellipse at center, rgba(255,176,32,0.15) 0%, rgba(5,5,5,0.88) 100%)",
+          backdropFilter: "blur(14px)",
         }}
       />
 
@@ -163,10 +163,10 @@ export default function LevelUpCelebration({ level, onDone }: Props) {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-          className="font-body text-[0.9rem] text-white/60"
+          transition={{ delay: 0.9, duration: 0.3 }}
+          className="font-body text-center text-[0.9rem] text-white/60 max-w-[300px]"
         >
-          Keep it up! You&apos;re unstoppable.
+          Keep it up! You're unstoppable.
         </motion.p>
 
         <motion.p

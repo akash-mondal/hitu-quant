@@ -73,7 +73,7 @@ export default function ArticleCard({ resource, onToggle }: Props) {
         {/* Mark complete */}
         <button
           onClick={onToggle}
-          className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[0.75rem] font-body font-semibold transition-all duration-200 ${
+          className={`shrink-0 inline-flex items-center justify-center gap-1.5 min-w-[5.25rem] px-3 py-1.5 rounded-lg text-[0.75rem] font-body font-semibold transition-all duration-200 ${
             resource.isCompleted
               ? "bg-success/10 text-success border border-success/30"
               : "bg-gold-500 text-charcoal-900 hover:bg-gold-400 shadow-sm"

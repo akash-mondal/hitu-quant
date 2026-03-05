@@ -17,7 +17,7 @@ export default function TopBar({ profile }: TopBarProps) {
           <span className="text-sm leading-none mt-0.5">📐</span>
         </div>
         <span className="font-display text-lg text-charcoal-900">
-          Hitu<span className="text-gold-600">Quant</span>
+          Quant<span className="text-gold-600">Buddy</span>
         </span>
       </div>
 

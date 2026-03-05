@@ -43,19 +43,19 @@ export default function TopicDetail() {
         // Always show XP
         celebrate({ type: "xp", amount: result.xpChange });
 
-        // Subtopic just completed → full celebration
+        // Subtopic just completed
         if (result.subtopicJustCompleted) {
           celebrate({ type: "subtopicComplete" });
           playSubtopic();
         }
 
-        // Topic just completed → big celebration
+        // Topic just completed
         if (result.topicJustCompleted) {
           celebrate({ type: "topicComplete" });
           playTopic();
         }
 
-        // Leveled up → epic celebration
+        // Leveled up
         if (result.leveledUp && result.newLevel) {
           celebrate({ type: "levelUp", level: result.newLevel! });
           playLevelUp();
@@ -80,6 +80,7 @@ export default function TopicDetail() {
             }
           }
         }
+
       }
     },
     [
@@ -160,7 +161,7 @@ export default function TopicDetail() {
         </Link>
       </motion.div>
 
-      {/* ── Topic Header — compact ── */}
+      {/* Topic Header */}
       <motion.div variants={fadeUp} className="card p-4 mb-4">
         <div className="flex items-center gap-3">
           <div
@@ -217,7 +218,7 @@ export default function TopicDetail() {
         </div>
       </motion.div>
 
-      {/* ── Subtopic Tabs ── */}
+      {/* Subtopic Tabs */}
       <motion.div variants={fadeUp} className="mb-4">
         <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-1 px-1">
           {subtopics.map((st, idx) => {
@@ -256,7 +257,7 @@ export default function TopicDetail() {
         </div>
       </motion.div>
 
-      {/* ── Current Subtopic Content ── */}
+      {/* Current Subtopic Content */}
       <AnimatePresence mode="wait" custom={wizard.direction}>
         <motion.div
           key={currentSubtopic._id}
@@ -267,7 +268,7 @@ export default function TopicDetail() {
           exit="exit"
           transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
         >
-          {/* Subtopic info — compact inline */}
+          {/* Subtopic info */}
           <div className="flex items-center gap-2.5 mb-3">
             <div
               className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono font-bold text-[0.7rem] shrink-0 ${
@@ -279,7 +280,7 @@ export default function TopicDetail() {
                 !isSubtopicDone ? { background: topic.color } : undefined
               }
             >
-              {isSubtopicDone ? "✓" : wizard.stepIndex + 1}
+              {isSubtopicDone ? "\u2713" : wizard.stepIndex + 1}
             </div>
             <div className="flex-1 min-w-0">
               <h2 className="font-body font-bold text-[0.95rem] text-charcoal-900 leading-tight">
@@ -302,7 +303,7 @@ export default function TopicDetail() {
           {/* Resource Cards */}
           {currentTotal === 0 ? (
             <div className="card py-12 text-center">
-              <span className="text-3xl mb-3 block">📭</span>
+              <span className="text-3xl mb-3 block">{"\uD83D\uDCED"}</span>
               <p className="font-body text-[0.88rem] text-charcoal-600/60 mb-1">
                 No resources added yet
               </p>
@@ -333,7 +334,7 @@ export default function TopicDetail() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Navigation ── */}
+      {/* Navigation */}
       <div className="flex items-center justify-between mt-5 gap-4">
         <button
           onClick={wizard.goPrev}
@@ -410,6 +411,7 @@ export default function TopicDetail() {
           </button>
         )}
       </div>
+
     </motion.div>
   );
 }

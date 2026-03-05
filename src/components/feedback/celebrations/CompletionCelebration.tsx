@@ -10,7 +10,7 @@ interface Props {
 
 const CONFIG = {
   subtopic: {
-    emoji: "🎉",
+    emoji: "\uD83C\uDF89",
     title: "Subtopic Complete!",
     subtitle: "+30 XP Bonus",
     accentColor: "#22C55E",
@@ -18,7 +18,7 @@ const CONFIG = {
     duration: 3500,
   },
   topic: {
-    emoji: "🏆",
+    emoji: "\uD83C\uDFC6",
     title: "Topic Mastered!",
     subtitle: "+100 XP Bonus",
     accentColor: "#FFB020",
@@ -26,7 +26,7 @@ const CONFIG = {
     duration: 4500,
   },
   milestone: {
-    emoji: "🔥",
+    emoji: "\uD83D\uDD25",
     title: "",
     subtitle: "Keep going!",
     accentColor: "#F59E0B",
@@ -128,9 +128,9 @@ export default function CompletionCelebration({
         style={{
           background:
             variant === "topic"
-              ? "radial-gradient(ellipse at center, rgba(255,176,32,0.12) 0%, rgba(0,0,0,0.55) 100%)"
-              : "radial-gradient(ellipse at center, rgba(34,197,94,0.08) 0%, rgba(0,0,0,0.5) 100%)",
-          backdropFilter: "blur(8px)",
+              ? "radial-gradient(ellipse at center, rgba(255,176,32,0.12) 0%, rgba(0,0,0,0.75) 100%)"
+              : "radial-gradient(ellipse at center, rgba(34,197,94,0.08) 0%, rgba(0,0,0,0.72) 100%)",
+          backdropFilter: "blur(12px)",
         }}
       />
 
@@ -191,8 +191,8 @@ export default function CompletionCelebration({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="font-mono font-bold text-[1rem] px-4 py-2 rounded-xl"
+          transition={{ delay: 0.5, duration: 0.3 }}
+          className="font-body font-bold font-mono text-center text-[1rem] max-w-[320px] px-5 py-2.5 rounded-xl"
           style={{
             color: cfg.accentColor,
             background: `${cfg.accentColor}20`,
